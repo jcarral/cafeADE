@@ -35,6 +35,14 @@ export default function statusReducer(state = {
 			return {
 				...state,
 				error: false
+			};
+		case c.USER_CREATED:
+			return {
+				...state,
+				user: {
+					isLogged: true,
+					role: action.payload
+				}
 			}
 		default:
 			return state;

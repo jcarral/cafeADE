@@ -56,3 +56,26 @@ export function resetError(){
     type: c.ERROR_RESET
   };
 }
+
+export function signUp(data){
+  return (dispatch) => {
+    dispatch(startLoading());
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(data.email, data.pwd)
+      .then((user) => firebase.database().ref(`/users/${user.uid}`))
+      .then((dbRef) => dbRef.set({role: 'regular'}))
+      //.then(() => user.updateProfile({displayName: data.username}))
+      .then(() => dispatch(userCreated('regular')))
+      .then(() => dispatch(endLoading()))
+      .catch((e) => errorFetching(e));
+  }
+}
+
+export function userCreated(role){
+  console.warn('created');
+  return {
+    type: c.USER_CREATED,
+    payload: role
+  }
+}

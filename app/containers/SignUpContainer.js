@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import SignUp from '../components/SignUp';
 import LoadingPage from '../components/LoadingPage';
 
+import { signUp } from '../actions/statusActions';
+
 class SignUpContainer extends Component {
   constructor(props){
     super(props);
@@ -27,7 +29,7 @@ class SignUpContainer extends Component {
   }
 
   handleSubmit = () => {
-    console.warn(JSON.stringify(this.state));
+    this.props.dispatch(signUp(this.state))
   }
 
   render(){

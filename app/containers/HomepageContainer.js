@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { logout } from '../actions/statusActions';
+
 import Homepage from '../components/Homepage.js';
 
 class HomepageContainer extends Component{
@@ -8,9 +10,8 @@ class HomepageContainer extends Component{
     super(props);
   }
 
-  handleNavigation = () => {
-    const { navigate } = this.props.navigation;
-    navigate('Meals');
+  handleNavigationLogout = () => {
+    this.props.dispatch(logout());
   }
 
   handleNavigationLogin = () => {
@@ -21,7 +22,7 @@ class HomepageContainer extends Component{
   render(){
     return (<Homepage
       isLogged={this.props.isLogged}
-      handleNavigation={this.handleNavigation}
+      handleNavigationLogout={this.handleNavigationLogout}
       handleNavigationLogin={this.handleNavigationLogin}
 
       />);

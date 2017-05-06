@@ -1,13 +1,9 @@
 import React, { Component} from 'react';
 import { Provider } from 'react-redux';
 import store from './app/store.js';
-import { StackNavigator } from 'react-navigation';
 import * as firebase from 'firebase';
 
-import HomepageContainer from './app/containers/HomepageContainer';
-import MealsContainer from './app/containers/MealsContainer';
-import LoginContainer from './app/containers/LoginContainer';
-import SignUpContainer from './app/containers/SignUpContainer';
+import AppRouter from './app/containers/AppRouter';
 
 const config = {
 	apiKey: "AIzaSyD2CXr6xiswW1PI9AHGu9mUQfvQPsAzqDk",
@@ -21,18 +17,11 @@ firebase.initializeApp(config);
 
 export default class App extends Component {
   render() {
-    console.warn(HomepageContainer);
+    console.warn(JSON.stringify(store),JSON.stringify(this.props));
     return (
       <Provider store={store}>
-        <AppNavigation />
+        <AppRouter />
       </Provider>
     );
   }
 }
-
-const AppNavigation = StackNavigator({
-  Main: {screen: HomepageContainer},
-  Meals: {screen: MealsContainer},
-  Login: {screen: LoginContainer},
-	SignUp: {screen: SignUpContainer}
-});

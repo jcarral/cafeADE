@@ -1,0 +1,1 @@
+export const MEALS_FETCHED = 'MEALS_FETCHED';

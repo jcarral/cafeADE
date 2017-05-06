@@ -58,6 +58,7 @@ export function resetError(){
 }
 
 export function signUp(data){
+  console.warn(JSON.stringify(data));
   return (dispatch) => {
     dispatch(startLoading());
     firebase
@@ -73,9 +74,14 @@ export function signUp(data){
 }
 
 export function userCreated(role){
-  console.warn('created');
   return {
     type: c.USER_CREATED,
     payload: role
+  }
+}
+
+export function logout(){
+  return {
+    type: c.USER_LOGOUT
   }
 }

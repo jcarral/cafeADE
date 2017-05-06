@@ -43,6 +43,14 @@ export default function statusReducer(state = {
 					isLogged: true,
 					role: action.payload
 				}
+			};
+		case c.USER_LOGOUT:
+			return {
+				...state,
+				user: {
+					isLogged: false,
+					role: 'anonymous'
+				}
 			}
 		default:
 			return state;

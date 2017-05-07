@@ -30,9 +30,8 @@ class LoginContainer extends Component{
     const { navigate } = this.props.navigation;
     navigate('SignUp');
   }
-  
-  render(){
 
+  render(){
     if(this.props.loading){
       return (<LoadingPage />);
     }else{

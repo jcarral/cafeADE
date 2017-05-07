@@ -33,12 +33,14 @@ const loginFinished = (data) => {
 };
 
 export function startLoading(){
+  console.log('start loading');
   return {
     type: c.START_LOADING
   };
 }
 
 export function endLoading(){
+  console.log('end loading');
   return {
     type: c.END_LOADING
   };
@@ -58,7 +60,7 @@ export function resetError(){
 }
 
 export function signUp(data){
-  console.warn(JSON.stringify(data));
+
   return (dispatch) => {
     dispatch(startLoading());
     firebase

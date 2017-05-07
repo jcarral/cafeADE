@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
 import { Text, View, ListView, Button, TextInput } from 'react-native';
 
+import mealstyle from '../styles/platesStyle';
+
 const MealView = ({handleSearch, currentInput, plates, title, isLogged}) => (
   <View>
-    <SearchView handleSearch={handleSearch} currentInput={currentInput}/>
-    <Text> {title} </Text>
-    <PlatesList plates={plates} />
+    <SearchView  handleSearch={handleSearch} currentInput={currentInput}/>
+    <PlatesList plates={plates} isLogged={isLogged}/>
   </View>
 );
 
@@ -21,8 +22,8 @@ export default MealView;
 
 
 const SearchView = ({handleSearch, currentInput}) => (
-  <View>
-    <TextInput />
+  <View style={mealstyle.search}>
+    <TextInput onChangeText={handleSearch} placeholder="Search plate..." style={{height: 40}}/>
   </View>
 );
 
@@ -33,7 +34,6 @@ SearchView.propTypes = {
 
 
 const PlatesList = ({plates, isLogged}) => {
-  const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 	return (
 		<View>
 			{plates.map((plate) => <PlateListItem plate={plate} isLogged={isLogged} />)}
@@ -47,12 +47,16 @@ PlatesList.propTypes = {
 };
 
 const PlateListItem = ({plate, isLogged}) => (
-  <View>
-    <Text>{plate.name}</Text>
-    <Text>{plate.price}</Text>
-    {plate.ingredients.map((ing) => <Text>{ing}</Text>)}
-    {isLogged && <Button title='+' />}
+  <View style={mealstyle.item}>
+    <View>
+      <Text>Nombre plato: {plate.name}</Text>
+      <Text>Precio: {plate.price}</Text>
+      {isLogged && <Button title='+' />}
     </View>
+    <View style={mealstyle.ingredientList}>
+      <Text>{plate.ingredients.join(', ')}</Text>
+    </View>
+  </View>
 );
 
 PlateListItem.propTypes = {

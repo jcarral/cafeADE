@@ -17,7 +17,7 @@ export function fetchMeals(){
         type: c.MEALS_FETCHED,
         payload: meals
       }))
-      .then(() => endLoading())
+      .then(() => dispatch(endLoading()))
       .catch((e) => errorFetching(e));
   };
 }

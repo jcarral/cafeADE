@@ -16,13 +16,13 @@ class MealsContainer extends Component{
   }
 
   handleNavigation = (page) => {
-    console.warn('click', page);
+
     const { navigate } = this.props.navigation;
     navigate('Meal', { page: page });
   }
 
   render(){
-    console.warn(JSON.stringify(this.props));
+
     return (<MealsView handleNavigation={this.handleNavigation}/>);
   }
 }

@@ -4,29 +4,33 @@ import { connect } from 'react-redux';
 import MealView from '../components/MealView';
 
 class MealContainer extends Component{
+  static navigationOptions = ({ navigation }) => ({
+    title: `${navigation.state.params.page}`,
+  });
   constructor(props){
     super(props);
+    const { params } = this.props.navigation.state;
+    this.currentPage = params.page
     this.state = {
-      plates : [],
+      plates : this.props.meals[this.currentPage] || [],
       currentInput: ''
     };
   }
 
   handleSearch = (text) => {
     this.setState({
-      plates: this.state.plates.filter((p) => p.title.contains(text))
+      plates: this.props.meals[this.currentPage].filter((p) => p.name.toLowerCase().includes(text.toLowerCase()))
     });
   }
 
 
   render(){
-    const { params } = this.props.navigation.state;
-    const currentPage = params.page
+
     return(<MealView
-      title={currentPage}
+      title={this.currentPage}
       handleSearch={this.handleSearch}
       currentInput={this.state.currentInput}
-      plates={this.props.meals[currentPage]}
+      plates={this.state.plates}
       isLogged={this.props.isLogged}
       />);
   }

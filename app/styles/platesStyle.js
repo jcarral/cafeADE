@@ -2,21 +2,21 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   item : {
-    backgroundColor: '#c9b395',
-    borderColor: '#000033',
+    backgroundColor: '#D1F2EB',
+    borderColor: '#0E6251',
     borderWidth: 1,
   },
 
   title: {
-    color: '#770264',
+    color: '#0E6251',
     fontSize: 20,
     textAlign: 'center',
     padding: 10,
-    backgroundColor: '#a16737',
+    backgroundColor: '#76D7C4',
     fontWeight: 'bold'
   },
   search: {
-    backgroundColor: '#e207cc'
+    backgroundColor: '#EBDEF0'
   },
   ingredientList: {
     flexDirection: 'row'

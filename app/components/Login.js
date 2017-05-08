@@ -1,15 +1,22 @@
 import React, { PropTypes } from 'react';
-import {View, TextInput, Text, Button} from 'react-native';
+import {View, TextInput, Text} from 'react-native';
+import { Button } from 'react-native-elements';
+import {Icon} from 'react-native-elements';
+
+import cssLogin from '../styles/loginStyles';
 
 const Login = ({handleUsername, handlePwd, handleLogIn, pwd, name, error, handleNavigationSignUp}) => (
-  <View>
+  <View style={cssLogin.container}>
     {error && <Text>Error, couldn't login correctly</Text>}
-    <Text>Username: </Text>
-    <TextInput style={{height: 40}} onChangeText={handleUsername} value={name}placeholder="Enter the username"/>
+    <View style={cssLogin.loginBox}>
+      <Icon name="account-circle" size={200} color={'#FF9800'}/>
+      <Text>Email: </Text>
+      <TextInput style={{height: 40}} autoCapitalize="none" onChangeText={handleUsername} value={name} placeholder="Enter the username"/>
       <Text>Password: </Text>
-      <TextInput style={{height: 40}} value={pwd} onChangeText={handlePwd} placeholder="Enter the password"/>
-      <Button onPress={handleLogIn} title="Log In"/>
-      <Button onPress={handleNavigationSignUp} title="SignUp" />
+      <TextInput secureTextEntry={true} style={{height: 40}} value={pwd} onChangeText={handlePwd} placeholder="Enter the password"/>
+      <Button buttonStyle={{backgroundColor: '#FF9800'}} onPress={handleLogIn} title="Log In"/>
+    </View>
+    <Button buttonStyle={{backgroundColor: '#FFC107'}} onPress={handleNavigationSignUp} title="SignUp" />
   </View>
 );
 

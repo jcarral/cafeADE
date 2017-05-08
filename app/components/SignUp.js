@@ -1,5 +1,9 @@
 import React, {PropTypes} from 'react';
-import {View, TextInput, Text, Button} from 'react-native';
+import {View, TextInput, Text} from 'react-native';
+
+import { Button } from 'react-native-elements';
+
+import css from '../styles/signupStyles';
 
 const SignUp = ({
 	handleUsername,
@@ -11,20 +15,24 @@ const SignUp = ({
 	email,
 	error
 }) => (
-	<View>
+	<View style={css.container}>
 		<Text>Username:</Text>
 		<TextInput style={{
 			height: 40
 		}} onChangeText={handleUsername} value={name} placeholder="Enter the username"/>
-		<Text>Email:</Text>
+	<Text>DNI/Pasaporte:</Text>
 		<TextInput style={{
+			height: 40
+		}} placeholder="Enter the ID Card"/>
+		<Text>Email:</Text>
+		<TextInput autoCapitalize="none" style={{
 			height: 40
 		}} onChangeText={handleEmail} value={email} placeholder="Enter the email"/>
 	<Text>Password:</Text>
-		<TextInput style={{
+		<TextInput secureTextEntry={true} style={{
 			height: 40
 		}} onChangeText={handlePwd} value={pwd} placeholder="Enter the password"/>
-		<Button onPress={handleSubmit} title="Sign Up"/>
+		<Button buttonStyle={{backgroundColor: '#FF9800'}} onPress={handleSubmit} title="Sign Up"/>
 	</View>
 );
 

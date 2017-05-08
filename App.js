@@ -17,7 +17,6 @@ firebase.initializeApp(config);
 
 export default class App extends Component {
   render() {
-    console.warn(JSON.stringify(store),JSON.stringify(this.props));
     return (
       <Provider store={store}>
         <AppRouter />

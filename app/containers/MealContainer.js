@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 
 import MealView from '../components/MealView';
 
+const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 class MealContainer extends Component{
   static navigationOptions = ({ navigation }) => ({
-    title: `${navigation.state.params.page}`,
+    title: `${capitalize(navigation.state.params.page)}`,
   });
   constructor(props){
     super(props);
@@ -16,6 +17,7 @@ class MealContainer extends Component{
       currentInput: ''
     };
   }
+
 
   handleSearch = (text) => {
     this.setState({
@@ -42,5 +44,4 @@ const mapStateToProps = (state, action) => ({
     error: state.status.error,
     meals: state.meals
 });
-
 export default connect(mapStateToProps)(MealContainer);

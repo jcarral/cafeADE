@@ -6,6 +6,10 @@ import { logout } from '../actions/statusActions';
 import Homepage from '../components/Homepage.js';
 
 class HomepageContainer extends Component{
+  static navigationOptions = {
+    header: null
+  }
+
   constructor(props){
     super(props);
   }

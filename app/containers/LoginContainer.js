@@ -6,6 +6,10 @@ import LoadingPage from '../components/LoadingPage';
 import { login, resetError } from '../actions/statusActions';
 
 class LoginContainer extends Component{
+  static navigationOptions = {
+    header: null
+  }
+  
   constructor(props){
     super(props);
     this.state = {

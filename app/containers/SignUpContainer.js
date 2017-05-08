@@ -7,6 +7,10 @@ import LoadingPage from '../components/LoadingPage';
 import { signUp } from '../actions/statusActions';
 
 class SignUpContainer extends Component {
+  static navigationOptions = {
+    title: 'Register'
+  }
+
   constructor(props){
     super(props);
     this.state = {

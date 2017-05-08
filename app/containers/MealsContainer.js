@@ -5,6 +5,10 @@ import { fetchMeals } from '../actions/mealsActions';
 import MealsView from '../components/MealsView';
 
 class MealsContainer extends Component{
+  static navigationOptions = {
+    header: null
+  }
+  
   constructor(props){
     super(props);
   }

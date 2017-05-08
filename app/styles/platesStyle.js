@@ -32,6 +32,31 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     flex: 1,
     backgroundColor: '#F3EEE9',
-
+  },
+  modal:{
+    backgroundColor: 'white',
+    marginTop: 100,
+    marginLeft: 75,
+    marginRight: 75,
+    padding: 20,
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  row:{
+    flexDirection: 'row'
+  },
+  modalTitle:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    borderBottomColor: '#FF9800',
+    marginLeft: 10,
+    marginRight: 10,
+    padding: 10,
+    borderTopColor: 'white',
+    borderRightColor: 'white',
+    borderLeftColor: 'white'
+  },
+  imagePlate: {
+    margin: 20
   }
 });

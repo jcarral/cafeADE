@@ -14,7 +14,9 @@ class MealContainer extends Component{
     this.currentPage = params.page
     this.state = {
       plates : this.props.meals[this.currentPage] || [],
-      currentInput: ''
+      currentInput: '',
+      modalVisible: false,
+      selectedPlate: {}
     };
   }
 
@@ -25,7 +27,18 @@ class MealContainer extends Component{
     });
   }
 
+  handleOpenModal = (plate) => {
+    this.setState({
+      modalVisible: true,
+      selectedPlate: plate
+    });
+  }
 
+  handleCloseModal = () => {
+    this.setState({
+      modalVisible: false
+    });
+  };
   render(){
 
     return(<MealView
@@ -34,6 +47,10 @@ class MealContainer extends Component{
       currentInput={this.state.currentInput}
       plates={this.state.plates}
       isLogged={this.props.isLogged}
+      modalVisible={this.state.modalVisible}
+      selectedPlate={this.state.selectedPlate}
+      handleOpenModal={this.handleOpenModal}
+      handleCloseModal={this.handleCloseModal}
       />);
   }
 }

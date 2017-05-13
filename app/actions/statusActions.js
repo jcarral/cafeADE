@@ -71,7 +71,7 @@ export function signUp(data){
       //.then(() => user.updateProfile({displayName: data.username}))
       .then(() => dispatch(userCreated('regular')))
       .then(() => dispatch(endLoading()))
-      .catch((e) => errorFetching(e));
+      .catch((e) => dispatch(errorFetching(e)));
   }
 }
 

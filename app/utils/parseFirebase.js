@@ -7,12 +7,13 @@ export const parseMeals = (meals) => {
 };
 
 const parseMeal = (meal) => {
-  return Object.keys(meal).map((i) => parsePlate(meal[i]));
+  return Object.keys(meal).map((i) => parsePlate(meal[i], i));
 };
 
-const parsePlate = (plate) => {
+const parsePlate = (plate, i) => {
   return {
     ...plate,
+    id: i,
     ingredients: Object.keys(plate.ingredients)
   };
 };

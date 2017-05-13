@@ -18,6 +18,6 @@ export function fetchMeals(){
         payload: meals
       }))
       .then(() => dispatch(endLoading()))
-      .catch((e) => errorFetching(e));
+      .catch((e) => dispatch(errorFetching(e)));
   };
 }

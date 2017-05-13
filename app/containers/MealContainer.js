@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import MealView from '../components/MealView';
+import { addToCart } from '../actions/cartActions';
 
 const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+
+
 class MealContainer extends Component{
   static navigationOptions = ({ navigation }) => ({
     title: `${capitalize(navigation.state.params.page)}`,
@@ -39,6 +42,18 @@ class MealContainer extends Component{
       modalVisible: false
     });
   };
+
+handleAddMealToCart = (id, name, price) => {
+  const cartPlate = {
+    id : id,
+    category: this.currentPage,
+    name: name,
+    quantity: 1,
+    price: price
+  };
+  this.props.dispatch(addToCart(cartPlate));
+};
+
   render(){
 
     return(<MealView
@@ -51,6 +66,7 @@ class MealContainer extends Component{
       selectedPlate={this.state.selectedPlate}
       handleOpenModal={this.handleOpenModal}
       handleCloseModal={this.handleCloseModal}
+      handleAddMealToCart={this.handleAddMealToCart}
       />);
   }
 }

@@ -43,7 +43,8 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   row:{
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   modalTitle:{
     fontSize: 20,
@@ -58,5 +59,9 @@ export default StyleSheet.create({
   },
   imagePlate: {
     margin: 20
+  },
+  itemName:{
+    width: '60%',
+    overflow: 'hidden'
   }
 });

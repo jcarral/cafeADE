@@ -1,0 +1,6 @@
+export const INCREMENT_PLATE = 'INCREMENT_PLATE';
+export const DECREMENT_PLATE = 'DECREMENT_PLATE';
+export const REMOVE_PLATE = 'REMOVE_PLATE';
+export const ADD_PLATE = 'ADD_PLATE';
+export const CONFIRM_CART = 'CONFIRM_CART';
+export const RESET_CART = 'RESET_CART';

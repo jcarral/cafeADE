@@ -9,6 +9,7 @@ import LoginContainer from './LoginContainer';
 import SignUpContainer from './SignUpContainer';
 import CartContainer from './CartContainer';
 import MealContainer from './MealContainer';
+import ConfirmedContainer from './ConfirmedContainer';
 
 class AppRouter extends Component {
 	constructor(props) {
@@ -30,7 +31,7 @@ class AppRouter extends Component {
 				}
 			}
 		};
-		if (this.props.isLogged) {
+		if (this.props.isLogged) { //TODO: Change to isLogged
 			userTypeTabs = {
 				...userTypeTabs,
 				Cart: {
@@ -73,6 +74,9 @@ class AppRouter extends Component {
 			},
 			SignUp: {
 				screen: SignUpContainer
+			},
+			Confirm: {
+				screen: ConfirmedContainer
 			}
 		}, {
 			headerMode: 'screen'

@@ -4,11 +4,11 @@ import { Button, Icon, Card } from 'react-native-elements';
 
 import css from '../styles/platesStyle';
 
-const MealView = ({handleSearch, currentInput, plates, title, isLogged, modalVisible, handleOpenModal, selectedPlate, handleCloseModal}) => (
+const MealView = ({handleSearch, currentInput, plates, title, isLogged, modalVisible, handleOpenModal, selectedPlate, handleCloseModal, handleAddMealToCart}) => (
   <View style={css.container}>
     <PlateModal visible={modalVisible} handleCloseModal={handleCloseModal} data={selectedPlate}/>
     <SearchView  handleSearch={handleSearch} currentInput={currentInput}/>
-    <PlatesList handleOpenModal={handleOpenModal} plates={plates} isLogged={isLogged}/>
+    <PlatesList handleOpenModal={handleOpenModal} plates={plates} isLogged={isLogged} handleAddMealToCart={handleAddMealToCart}/>
   </View>
 );
 
@@ -21,7 +21,8 @@ MealView.propTypes = {
  modalVisible: PropTypes.bool.isRequired,
  handleOpenModal: PropTypes.func.isRequired,
  selectedPlate: PropTypes.object.isRequired,
- handleCloseModal: PropTypes.func.isRequired
+ handleCloseModal: PropTypes.func.isRequired,
+ handleAddMealToCart: PropTypes.func.isRequired
 };
 
 export default MealView;
@@ -38,12 +39,12 @@ SearchView.propTypes = {
  currentInput: PropTypes.string.isRequired
 };
 
-const PlatesList = ({plates, isLogged, handleOpenModal}) => {
+const PlatesList = ({plates, isLogged, handleOpenModal, handleAddMealToCart}) => {
 	return (
 		<View>
       <FlatList
         data={plates}
-        renderItem={({item}) => _renderItem(item, isLogged, handleOpenModal)}
+        renderItem={({item}) => _renderItem(item, isLogged, handleOpenModal, handleAddMealToCart)}
         keyExtractor={(item, index) => index}
         />
 		</View>
@@ -53,29 +54,34 @@ const PlatesList = ({plates, isLogged, handleOpenModal}) => {
 PlatesList.propTypes = {
   plates: PropTypes.array.isRequired,
   isLogged: PropTypes.bool.isRequired,
-  handleOpenModal: PropTypes.func.isRequired
+  handleOpenModal: PropTypes.func.isRequired,
+  handleAddMealToCart: PropTypes.func.isRequired
 };
 
-const PlateListItem = ({plate, isLogged, handleOpenModal}) => (
+const PlateListItem = ({plate, isLogged, handleOpenModal, handleAddMealToCart}) => (
   <View style={css.item}>
     <View style={css.itemInfo}>
-      <Text style={css.itemInfoText}>{plate.name}</Text>
+      <View style={css.itemName}>
+        <Text style={css.itemInfoText}>{plate.name}</Text>
+        <Text style={css.ingredientList}>{plate.ingredients.join(', ')}</Text>
+      </View>
       <View style={css.row}>
         <Text style={css.itemInfoText}>{plate.price}€</Text>
-        <Icon onPress={() => handleOpenModal(plate)} name='image' color='#FF9800'/>
-        {isLogged && <Icon name="add"/>}
+        <Icon onPress={() => handleOpenModal(plate)} name='image' color='#FF9800' raised/>
+        {isLogged && <Icon name="add" onPress={() => handleAddMealToCart(plate.id, plate.name, plate.price)}/>}
       </View>
 
     </View>
 
-    <Text style={css.ingredientList}>{plate.ingredients.join(', ')}</Text>
+
   </View>
 );
 
 PlateListItem.propTypes = {
   plate: PropTypes.object.isRequired,
   isLogged: PropTypes.bool.isRequired,
-  handleOpenModal: PropTypes.func.isRequired
+  handleOpenModal: PropTypes.func.isRequired,
+  handleAddMealToCart: PropTypes.func.isRequired
 };
 
 const PlateModal = ({visible, handleCloseModal, data}) => {
@@ -112,10 +118,11 @@ PlateModal.propTypes = {
 
 
 
-const _renderItem = (item, isLogged, handleOpenModal) =>  (
+const _renderItem = (item, isLogged, handleOpenModal, handleAddMealToCart) =>  (
       <PlateListItem
         plate={item}
         isLogged={isLogged}
         handleOpenModal={handleOpenModal}
+        handleAddMealToCart={handleAddMealToCart}
       />
 );

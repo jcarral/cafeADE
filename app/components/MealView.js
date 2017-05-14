@@ -88,7 +88,6 @@ const PlateModal = ({visible, handleCloseModal, data}) => {
 	const imageURI = {
 		uri: data.imgSrc
 	};
-	console.log('URI:', imageURI);
 	return (
 		<Modal animationType={"slide"} transparent={false} visible={visible} transparent={true}>
 			<Card title={data.name}>

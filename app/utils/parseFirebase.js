@@ -17,3 +17,6 @@ const parsePlate = (plate, i) => {
     ingredients: Object.keys(plate.ingredients)
   };
 };
+
+
+export const filterByStatus = (data) => Object.keys(data || {}).map((key) => data[key]).filter((order) => order.active);

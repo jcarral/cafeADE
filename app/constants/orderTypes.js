@@ -1,0 +1,2 @@
+export const ORDERS_FETCHED = 'ORDERS_FETCHED';
+export const ORDER_FINISHED = 'ORDER_FINISHED';

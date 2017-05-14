@@ -4,9 +4,9 @@ import { Button } from 'react-native-elements';
 
 const Confirmed = ({resume, navigateToInit}) => (
     <View>
-      <Text> TuPutoNombre, el pedido se ha realizado correctamente </Text>
-      <Text> Tienes el pedido número #975 </Text>
-      <Text> Podrás pasarte a recogerlo a las 25:89 </Text>
+      <Text> {resume.username}, el pedido se ha realizado correctamente </Text>
+      <Text> Tienes el pedido número #{resume.count} </Text>
+      <Text> Podrás pasarte a recogerlo a las  {getOrderDate()}</Text>
       <Button onPress={navigateToInit} title="Volver al inicio"/>
     </View>
 );
@@ -17,3 +17,11 @@ Confirmed.propTypes = {
 };
 
 export default Confirmed;
+
+
+const getOrderDate = () => {
+  const old = new Date();
+  let current = new Date();
+  current.setMinutes(old.getMinutes()+20);
+  return `${current.getHours()}:${current.getMinutes()}`;
+}

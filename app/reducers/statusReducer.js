@@ -4,7 +4,8 @@ export default function statusReducer(state = {
 	loading: false,
 	user: {
 		isLogged: false,
-		role: 'anonymous'
+		role: 'anonymous',
+		username: ''
 	},
 	updated: 0,
 	error: false

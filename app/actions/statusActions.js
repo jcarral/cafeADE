@@ -27,7 +27,8 @@ const loginFinished = (data) => {
     type: c.LOGIN_FINISHED,
     payload: {
       isLogged: true,
-      role: data.role
+      role: data.role,
+      username: data.username
     }
   };
 };
@@ -67,8 +68,7 @@ export function signUp(data){
       .auth()
       .createUserWithEmailAndPassword(data.email, data.pwd)
       .then((user) => firebase.database().ref(`/users/${user.uid}`))
-      .then((dbRef) => dbRef.set({role: 'regular'}))
-      //.then(() => user.updateProfile({displayName: data.username}))
+      .then((dbRef) => dbRef.set({role: 'regular', username: data.username}))
       .then(() => dispatch(userCreated('regular')))
       .then(() => dispatch(endLoading()))
       .catch((e) => dispatch(errorFetching(e)));

@@ -12,6 +12,7 @@ const Cart = ({
 	price,
 	takeaway,
 	handleToggleTakeAway,
+	handleComment,
 	handleAddress
 }) => (
 	<View>
@@ -22,6 +23,13 @@ const Cart = ({
 				<Text>{price}</Text>
 			</View>
 			{takeaway && <CartTakeAway handleAddress={handleAddress}/>}
+			<TextInput
+				multiline = {true}
+				numberOfLines = {4}
+				style={{height: 40}}
+				onChangeText={handleComment}
+
+				/>
 			<Button title='Confirm card' onPress={() => handleConfirmCard(price)}/>
 		</View>
 	</View>
@@ -34,7 +42,8 @@ Cart.propTypes = {
 	handleConfirmCard: PropTypes.func.isRequired,
 	takeaway: PropTypes.bool.isRequired,
 	handleToggleTakeAway: PropTypes.func.isRequired,
-	handleAddress: PropTypes.func.isRequired
+	handleAddress: PropTypes.func.isRequired,
+	handleComment: PropTypes.func.isRequired
 }
 export default Cart;
 

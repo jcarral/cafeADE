@@ -10,6 +10,7 @@ import SignUpContainer from './SignUpContainer';
 import CartContainer from './CartContainer';
 import MealContainer from './MealContainer';
 import ConfirmedContainer from './ConfirmedContainer';
+import OrdersContainer from './OrdersContainer';
 
 class AppRouter extends Component {
 	constructor(props) {
@@ -26,6 +27,13 @@ class AppRouter extends Component {
 			},
 			Meals: {
 				screen: MealsContainer,
+				navigationOptions: {
+					tabBarIcon: ({tintColor}) => <Icon name="restaurant" size={20} color={tintColor}/>
+				}
+			},
+			//DELETE
+			Orders: {
+				screen: OrdersContainer,
 				navigationOptions: {
 					tabBarIcon: ({tintColor}) => <Icon name="restaurant" size={20} color={tintColor}/>
 				}

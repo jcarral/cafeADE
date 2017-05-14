@@ -5,8 +5,18 @@ import { resetCart } from '../actions/cartActions';
 import Confirmed from '../components/Confirmed';
 
 class ConfirmedContainer extends Component {
+
+  static navigationOptions = {
+    header: null
+  }
+
   constructor(props){
     super(props);
+    const { params } = this.props.navigation.state;
+    this.resume = {
+      count: params.count,
+      username: params.author
+    };
   }
 
   navigateToInit = () => {
@@ -19,7 +29,7 @@ class ConfirmedContainer extends Component {
     return(
       <Confirmed
         navigateToInit={this.navigateToInit}
-        resume={{}}
+        resume={this.resume}
         />
     );
   }

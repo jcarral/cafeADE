@@ -33,18 +33,25 @@ export function confirmCart(data, meals, callback){
     payload.price = data.price;
     payload.author = data.author;
     payload.date = data.date;
+    payload.comment = data.comment;
     if(data.takeaway){
       payload.address = data.address;
     }
-    console.log(payload);
+    let orderCount = 0;
     const dbRef = firebase.database().ref('orders');
-    dbRef
-      .push(payload)
+    dbRef.once('value')
+      .then((snap) => snap.val())
+      .then((data) => Object.keys(data || {}).length)
+      .then((count) =>{ orderCount= count;
+        return dbRef.push({
+        ...payload,
+        count
+      })})
+      .then(() => callback(orderCount, data.author))
       .then(() => ({
         type: c.CONFIRM_CART
       }))
       .then(() => dispatch(endLoading()))
-      .then(() => callback())
       .catch((e) => dispatch(errorFetching(e)))
   }
 }

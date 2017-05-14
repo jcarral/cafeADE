@@ -15,6 +15,7 @@ class CartContainer extends Component {
     this.state = {
       takeaway : false,
       address: '',
+      comment: ''
     }
   }
 
@@ -28,6 +29,10 @@ class CartContainer extends Component {
 
   }
 
+  handleComment = (text) => {
+    this.setState({comment: text});
+  }
+
   handleConfirmCard = (price) => {
     const { navigate } = this.props.navigation;
 
@@ -35,8 +40,8 @@ class CartContainer extends Component {
       ...this.state,
        price: price,
        date: Date.now(),
-       author: 'UsuarioX'
-     }, this.props.cart, navigate('Confirm'))
+       author: this.props.username
+     }, this.props.cart, (count, author) => (navigate('Confirm', { count: count, author: author })))
    );
   }
 
@@ -53,7 +58,6 @@ class CartContainer extends Component {
   };
 
   render(){
-    console.log('Props: ', this.props.cart);
     let price = this.props.cart.reduce((total, plate) => (total + (parseFloat(plate.price)*plate.quantity)), 0);
     price = (this.state.takeaway)?price*1.1:price;
 
@@ -68,13 +72,15 @@ class CartContainer extends Component {
       price={price}
       handleToggleTakeAway={this.handleToggleTakeAway}
       handleAddress={this.handleAddress}
+      handleComment={this.handleComment}
       />);
   }
 }
 
 const mapStateToProps = (state, action) => ({
   loading: state.status.loading,
-  cart: state.cart
+  cart: state.cart,
+  username: state.status.user.username
 });
 
 export default connect(mapStateToProps)(CartContainer);

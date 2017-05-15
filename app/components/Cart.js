@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {Text, View, FlatList, TextInput} from 'react-native';
+import {Text, View, FlatList, TextInput, ScrollView} from 'react-native';
 import {Button, Icon, CheckBox} from 'react-native-elements';
 
 import css from '../styles/cartStyles';
@@ -15,24 +15,33 @@ const Cart = ({
 	handleComment,
 	handleAddress
 }) => (
-	<View>
-		<FlatList data={cart} renderItem={({item}) => _renderItem(item, handleIncrementPlate, handleDecrementPlate)} keyExtractor={(item, index) => index}/>
+	<ScrollView style={css.container}>
+		<View style={css.list}>
+			{cart.length >= 0 && <FlatList data={cart} renderItem={({item}) => _renderItem(item, handleIncrementPlate, handleDecrementPlate)} keyExtractor={(item, index) => index}/>}
+			{cart.length === 0 && <Text> No hay elementos en la carta! Selecciona un plato</Text>}
+		</View>
 		<View>
 			<View>
-				<CheckBox checked={takeaway} title='To take away' iconType='material' checkedIcon='check-box' uncheckedIcon='crop-square' checkedColor='#4c951f' onPress={handleToggleTakeAway}/>
-				<Text>{price}</Text>
+				<CheckBox checked={takeaway} title='Para llevar!' iconType='material' checkedIcon='check-box' uncheckedIcon='crop-square' checkedColor='#4c951f' onPress={handleToggleTakeAway}/>
+				{takeaway && <CartTakeAway handleAddress={handleAddress}/>}
+
 			</View>
-			{takeaway && <CartTakeAway handleAddress={handleAddress}/>}
+
+			<Text style={css.label}>Comentarios adicionales: </Text>
 			<TextInput
 				multiline = {true}
 				numberOfLines = {4}
-				style={{height: 40}}
+				style={css.textarea}
 				onChangeText={handleComment}
-
+				placeholder='Introduce algún comentario adicional aquí...'
 				/>
-			<Button title='Confirm card' onPress={() => handleConfirmCard(price)}/>
+			<View style={css.totalPrice}>
+				<Text> Precio total: </Text>
+				<Text>{price} €</Text>
+			</View>
+			<Button buttonStyle={css.button} title='Confirm card' onPress={() => handleConfirmCard(price)}/>
 		</View>
-	</View>
+	</ScrollView>
 );
 
 Cart.propTypes = {
@@ -52,11 +61,13 @@ export default Cart;
 const _renderItem = (item, handleIncrementPlate, handleDecrementPlate) => (<CartPlateItem plate={item} handleIncrementPlate={handleIncrementPlate} handleDecrementPlate={handleDecrementPlate}/>);
 
 const CartPlateItem = ({plate, handleIncrementPlate, handleDecrementPlate}) => (
-	<View style={css.row}>
-		<Icon name="restaurant" size={20}/>
-		<View style={css.info}>
-			<Text>{plate.name}</Text>
-			<Text>{plate.price}</Text>
+	<View style={css.itemRow}>
+		<View style={css.row}>
+			<Icon style={css.itemIcon} name="restaurant" size={20}/>
+			<View style={css.info}>
+				<Text style={css.label}>{plate.name}</Text>
+				<Text style={css.label}>{plate.price}€</Text>
+			</View>
 		</View>
 		<Counter value={plate.quantity} handleIncrementPlate={handleIncrementPlate} handleDecrementPlate={handleDecrementPlate} id={plate.id} category={plate.category}/>
 	</View>
@@ -69,10 +80,13 @@ CartPlateItem.propTypes = {
 };
 
 const Counter = ({value, handleIncrementPlate, handleDecrementPlate, id, category}) => (
-	<View>
-		<Icon name="add" onPress={() => handleIncrementPlate(id, category)}/>
-		<Text>{value}</Text>
-		<Icon name="remove" onPress={() => handleDecrementPlate(id, category, value)}/>
+	<View style={css.counter}>
+
+		<Text style={css.counterNumb}>{value}</Text>
+		<View style={css.counterBtns}>
+			<Icon style={css.countBtn} name="add" onPress={() => handleIncrementPlate(id, category)}/>
+			<Icon style={css.countBtn} name="remove" onPress={() => handleDecrementPlate(id, category, value)}/>
+		</View>
 	</View>
 );
 
@@ -86,15 +100,15 @@ Counter.propTypes = {
 //CART ADDRESS Component
 
 const CartTakeAway = ({handleAddress}) => (
-	<View>
+	<View style={css.takeaway}>
 		<Text>
-			Address:
+			Dirección:
 		</Text>
 		<TextInput style={{
 			height: 40
 		}} onChangeText={handleAddress} placeholder="Enter the address"/>
-		<Text>
-			** La opción de pedido a domicilio añade un sobrecoste del 5%
+	<Text style={css.advice}>
+			** La opción de pedido a domicilio añade un sobrecoste del 5% **
 		</Text>
 	</View>
 );

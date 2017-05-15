@@ -10,7 +10,7 @@ const Homepage = ({isLogged, handleNavigationLogout, handleNavigationLogin}) => 
     <Text style={cssHome.title}> Cafetería ADE </Text>
     <Image style={cssHome.logo} source={require('../images/logo.png')} resizeMode={Image.resizeMode.cover} style={{'height': 160, 'width': 160}}/>
     {!isLogged && <Button buttonStyle={cssBtn.mainBtn} underlayColor="red" title="Iniciar sesión" onPress={handleNavigationLogin} />}
-    {isLogged && <Button buttonStyle={cssBtn.mainBtn} title="Cerrar sesión" onPress={handleNavigationLogout} />}
+    {isLogged && <Button buttonStyle={cssBtn.logoutBtn} title="Cerrar sesión" onPress={handleNavigationLogout} />}
   </View>
 );
 

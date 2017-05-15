@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Text, View, ListView, TextInput, FlatList, Modal, Image } from 'react-native';
+import { ScrollView, Text, View, ListView, TextInput, FlatList, Modal, Image } from 'react-native';
 import { Button, Icon, Card } from 'react-native-elements';
 
 import css from '../styles/platesStyle';
@@ -56,13 +56,13 @@ SearchView.propTypes = {
 
 const PlatesList = ({plates, isLogged, handleOpenModal, handleAddMealToCart}) => {
 	return (
-		<View>
+		<ScrollView>
       <FlatList
         data={plates}
         renderItem={({item}) => _renderItem(item, isLogged, handleOpenModal, handleAddMealToCart)}
         keyExtractor={(item, index) => index}
         />
-		</View>
+		</ScrollView>
 	);
 };
 
@@ -82,8 +82,8 @@ const PlateListItem = ({plate, isLogged, handleOpenModal, handleAddMealToCart}) 
       </View>
       <View style={css.row}>
         <Text style={css.itemInfoText}>{plate.price}€</Text>
-        <Icon onPress={() => handleOpenModal(plate)} name='image' color='#FF9800' raised/>
-        {isLogged && <Icon name="add" onPress={() => handleAddMealToCart(plate.id, plate.name, plate.price)}/>}
+        <Icon onPress={() => handleOpenModal(plate)} name='image' color='#FF9800' size={18} raised/>
+        {isLogged && <Icon name="add" onPress={() => handleAddMealToCart(plate.id, plate.name, plate.price)} size={18} raised/>}
       </View>
 
     </View>

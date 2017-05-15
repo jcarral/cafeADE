@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
-import {View, TextInput, Text} from 'react-native';
+import {ScrollView, View, TextInput, Text} from 'react-native';
 import { Button } from 'react-native-elements';
 import {Icon} from 'react-native-elements';
 
 import cssLogin from '../styles/loginStyles';
 
 const Login = ({handleUsername, handlePwd, handleLogIn, pwd, name, error, handleNavigationSignUp}) => (
-  <View style={cssLogin.container}>
+  <ScrollView style={cssLogin.container}>
     {error && <Text>Error, couldn't login correctly</Text>}
     <View style={cssLogin.loginBox}>
       <Icon name="account-circle" size={200} color={'#FF9800'}/>
@@ -17,7 +17,7 @@ const Login = ({handleUsername, handlePwd, handleLogIn, pwd, name, error, handle
       <Button buttonStyle={{backgroundColor: '#FF9800'}} onPress={handleLogIn} title="Iniciar sesión"/>
     </View>
     <Button buttonStyle={{backgroundColor: '#FFC107'}} onPress={handleNavigationSignUp} title="Registro" />
-  </View>
+  </ScrollView>
 );
 
 Login.propTypes = {

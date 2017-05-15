@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {View, TextInput, Text} from 'react-native';
+import {ScrollView, View, TextInput, Text} from 'react-native';
 
 import { Button } from 'react-native-elements';
 
@@ -15,7 +15,7 @@ const SignUp = ({
 	email,
 	error
 }) => (
-	<View style={css.container}>
+	<ScrollView style={css.container}>
 		<Text>Nombre de usuario:</Text>
 		<TextInput style={{
 			height: 40
@@ -33,7 +33,7 @@ const SignUp = ({
 			height: 40
 		}} onChangeText={handlePwd} value={pwd} placeholder="Introduce la contraseña"/>
 	<Button buttonStyle={{backgroundColor: '#FF9800'}} onPress={handleSubmit} title="Registrarse!"/>
-	</View>
+	</ScrollView>
 );
 
 SignUp.propTypes = {

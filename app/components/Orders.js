@@ -65,6 +65,10 @@ const OrderModal = ({visible, handleCloseModal, data, handleFinishOrder}) => (
 					<Text>x{data.meals[key].quantity}</Text>
 				</View>
 			))}
+			<Text style={css.label}>Precio: </Text>
+			<Text>
+				{data.price}€
+			</Text>
 			<Text style={css.label}>Comentarios:</Text>
 			<Text>
 				{data.comment || 'No hay comentarios para este pedido'}
@@ -74,7 +78,7 @@ const OrderModal = ({visible, handleCloseModal, data, handleFinishOrder}) => (
 					backgroundColor: '#F44336',
 					marginBottom: 10,
 					marginTop: 15
-				}} title="Cerrar Modal" onPress={handleCloseModal}/>
+				}} title="Cerrar ventana" onPress={handleCloseModal}/>
 				<Button buttonStyle={{
 					backgroundColor: '#388a27',
 					marginBottom: 10,

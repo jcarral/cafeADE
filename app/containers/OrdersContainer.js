@@ -9,6 +9,7 @@ import LoadingPage from '../components/LoadingPage';
 class OrdersContainer extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Pedidos',
+    header: null
   });
 	constructor(props) {
 		super(props);

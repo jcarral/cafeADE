@@ -59,7 +59,7 @@ class CartContainer extends Component {
 
   render(){
     let price = this.props.cart.reduce((total, plate) => (total + (parseFloat(plate.price)*plate.quantity)), 0);
-    price = (this.state.takeaway)?price*1.1:price;
+    price = (this.state.takeaway)?price+1.5:price;
 
     if(this.props.loading) return (<LoadingPage />);
     return (<Cart

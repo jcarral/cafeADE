@@ -39,7 +39,7 @@ const Cart = ({
 				<Text> Precio total: </Text>
 				<Text>{price} €</Text>
 			</View>
-			<Button buttonStyle={css.button} title='Confirm card' onPress={() => handleConfirmCard(price)}/>
+			<Button buttonStyle={css.button} title='Confirmar pedido' onPress={() => handleConfirmCard(price)}/>
 		</View>
 	</ScrollView>
 );

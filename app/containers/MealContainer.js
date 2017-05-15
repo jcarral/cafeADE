@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Toast, {DURATION} from 'react-native-easy-toast';
 
 import MealView from '../components/MealView';
 import { addToCart } from '../actions/cartActions';
@@ -53,6 +54,7 @@ handleAddMealToCart = (id, name, price) => {
     price: price
   };
   this.props.dispatch(addToCart(cartPlate));
+  this.toast.show('Plato añadido');
 };
 
 goBack = () => {
@@ -75,6 +77,7 @@ goBack = () => {
       handleAddMealToCart={this.handleAddMealToCart}
       currentPage={capitalize(this.currentPage)}
       goBack={this.goBack}
+      onRef={ref => (this.toast = ref)}
       />);
   }
 }

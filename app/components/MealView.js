@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { ScrollView, Text, View, ListView, TextInput, FlatList, Modal, Image } from 'react-native';
 import { Button, Icon, Card } from 'react-native-elements';
+import Toast, {DURATION} from 'react-native-easy-toast';
 
 import css from '../styles/platesStyle';
 
@@ -15,13 +16,15 @@ const MealView = ({handleSearch,
   handleCloseModal,
   handleAddMealToCart,
   currentPage,
-  goBack
+  goBack,
+  onRef
 }) => (
   <View style={css.container}>
     <MealTitle page={currentPage} goBack={goBack} />
     <PlateModal visible={modalVisible} handleCloseModal={handleCloseModal} data={selectedPlate}/>
     <SearchView  handleSearch={handleSearch} currentInput={currentInput}/>
     <PlatesList handleOpenModal={handleOpenModal} plates={plates} isLogged={isLogged} handleAddMealToCart={handleAddMealToCart}/>
+    <Toast ref={onRef}/>
   </View>
 );
 

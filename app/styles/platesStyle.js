@@ -63,5 +63,20 @@ export default StyleSheet.create({
   itemName:{
     width: '60%',
     overflow: 'hidden'
+  },
+  header:{
+    flexDirection: 'row',
+    padding: 20,
+    paddingBottom: 10,
+    alignItems: 'center',
+    backgroundColor: '#FF6F00'
+  },
+  headerTxt: {
+    fontSize: 25,
+    fontWeight: 'bold',
+
+  },
+  headerIcon: {
+    height: 25
   }
 });

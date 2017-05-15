@@ -18,6 +18,15 @@ class AppRouter extends Component {
 	}
 
 	render() {
+		const mealsNavigator = StackNavigator({
+			Menus: {
+				screen: MealsContainer
+			},
+			Meal: {
+				screen: MealContainer
+			},
+		});
+
 		let userTypeTabs = {
 			Home: {
 				screen: HomepageContainer,
@@ -26,18 +35,13 @@ class AppRouter extends Component {
 				}
 			},
 			Meals: {
-				screen: MealsContainer,
+				screen: mealsNavigator,
 				navigationOptions: {
 					tabBarIcon: ({tintColor}) => <Icon name="restaurant" size={20} color={tintColor}/>
 				}
 			},
 			//DELETE
-			Orders: {
-				screen: OrdersContainer,
-				navigationOptions: {
-					tabBarIcon: ({tintColor}) => <Icon name="restaurant" size={20} color={tintColor}/>
-				}
-			}
+
 		};
 		if (this.props.isLogged) { //TODO: Change to isLogged
 			userTypeTabs = {
@@ -46,6 +50,17 @@ class AppRouter extends Component {
 					screen: CartContainer,
 					navigationOptions: {
 						tabBarIcon: ({tintColor}) => <Icon name="add-shopping-cart" size={20} color={tintColor}/>
+					}
+				}
+			}
+			if(this.props.role === 'empleado'){
+				userTypeTabs = {
+					...userTypeTabs,
+					Orders: {
+						screen: OrdersContainer,
+						navigationOptions: {
+							tabBarIcon: ({tintColor}) => <Icon name="av-timer" size={20} color={tintColor}/>
+						}
 					}
 				}
 			}
@@ -76,9 +91,6 @@ class AppRouter extends Component {
 			},
 			Login: {
 				screen: LoginContainer
-			},
-			Meal: {
-				screen: MealContainer
 			},
 			SignUp: {
 				screen: SignUpContainer

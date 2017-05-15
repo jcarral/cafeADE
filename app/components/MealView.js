@@ -4,8 +4,21 @@ import { Button, Icon, Card } from 'react-native-elements';
 
 import css from '../styles/platesStyle';
 
-const MealView = ({handleSearch, currentInput, plates, title, isLogged, modalVisible, handleOpenModal, selectedPlate, handleCloseModal, handleAddMealToCart}) => (
+const MealView = ({handleSearch,
+  currentInput,
+  plates,
+  title,
+  isLogged,
+  modalVisible,
+  handleOpenModal,
+  selectedPlate,
+  handleCloseModal,
+  handleAddMealToCart,
+  currentPage,
+  goBack
+}) => (
   <View style={css.container}>
+    <MealTitle page={currentPage} goBack={goBack} />
     <PlateModal visible={modalVisible} handleCloseModal={handleCloseModal} data={selectedPlate}/>
     <SearchView  handleSearch={handleSearch} currentInput={currentInput}/>
     <PlatesList handleOpenModal={handleOpenModal} plates={plates} isLogged={isLogged} handleAddMealToCart={handleAddMealToCart}/>
@@ -22,7 +35,9 @@ MealView.propTypes = {
  handleOpenModal: PropTypes.func.isRequired,
  selectedPlate: PropTypes.object.isRequired,
  handleCloseModal: PropTypes.func.isRequired,
- handleAddMealToCart: PropTypes.func.isRequired
+ handleAddMealToCart: PropTypes.func.isRequired,
+ goBack: PropTypes.func.isRequired,
+ currentPage: PropTypes.string.isRequired
 };
 
 export default MealView;
@@ -30,7 +45,7 @@ export default MealView;
 
 const SearchView = ({handleSearch, currentInput}) => (
   <View style={css.search}>
-    <TextInput onChangeText={handleSearch} placeholder="Search plate..." style={{height: 40}}/>
+    <TextInput onChangeText={handleSearch} placeholder="Buscar un plato.." style={{height: 40}}/>
   </View>
 );
 
@@ -115,7 +130,17 @@ PlateModal.propTypes = {
   data: PropTypes.object.isRequired
 };
 
+const MealTitle = ({goBack, page}) => (
+  <View style={css.header}>
+    <Icon  size={40} name='keyboard-arrow-left' onPress={goBack} />
+    <Text style={css.headerTxt}> {page} </Text>
+  </View>
+);
 
+MealTitle.propTypes = {
+  goBack: PropTypes.func.isRequired,
+  page: PropTypes.string.isRequired
+};
 
 const _renderItem = (item, isLogged, handleOpenModal, handleAddMealToCart) =>  (
       <PlateListItem

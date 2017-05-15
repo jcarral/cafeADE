@@ -9,7 +9,8 @@ const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
 class MealContainer extends Component{
   static navigationOptions = ({ navigation }) => ({
-    title: `${capitalize(navigation.state.params.page)}`,
+    //title: `${capitalize(navigation.state.params.page)}`,
+    header: null
   });
   constructor(props){
     super(props);
@@ -54,6 +55,11 @@ handleAddMealToCart = (id, name, price) => {
   this.props.dispatch(addToCart(cartPlate));
 };
 
+goBack = () => {
+  const { navigate } = this.props.navigation;
+  navigate('Menus');
+}
+
   render(){
 
     return(<MealView
@@ -67,6 +73,8 @@ handleAddMealToCart = (id, name, price) => {
       handleOpenModal={this.handleOpenModal}
       handleCloseModal={this.handleCloseModal}
       handleAddMealToCart={this.handleAddMealToCart}
+      currentPage={capitalize(this.currentPage)}
+      goBack={this.goBack}
       />);
   }
 }

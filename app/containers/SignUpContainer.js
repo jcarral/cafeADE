@@ -8,7 +8,7 @@ import { signUp } from '../actions/statusActions';
 
 class SignUpContainer extends Component {
   static navigationOptions = {
-    title: 'Register'
+    title: 'Registro'
   }
 
   constructor(props){

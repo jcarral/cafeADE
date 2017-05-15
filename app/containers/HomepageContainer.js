@@ -7,7 +7,8 @@ import Homepage from '../components/Homepage.js';
 
 class HomepageContainer extends Component{
   static navigationOptions = {
-    header: null
+    header: null,
+    title: 'Inicio'
   }
 
   constructor(props){

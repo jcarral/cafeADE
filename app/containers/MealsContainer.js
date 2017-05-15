@@ -6,9 +6,10 @@ import MealsView from '../components/MealsView';
 
 class MealsContainer extends Component{
   static navigationOptions = {
-    header: null
+    header: null,
+    title: 'Menus',
   }
-  
+
   constructor(props){
     super(props);
   }

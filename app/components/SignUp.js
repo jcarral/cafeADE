@@ -16,23 +16,23 @@ const SignUp = ({
 	error
 }) => (
 	<View style={css.container}>
-		<Text>Username:</Text>
+		<Text>Nombre de usuario:</Text>
 		<TextInput style={{
 			height: 40
-		}} onChangeText={handleUsername} value={name} placeholder="Enter the username"/>
+		}} onChangeText={handleUsername} value={name} placeholder="Introduce el nombre de usuario..."/>
 	<Text>DNI/Pasaporte:</Text>
 		<TextInput style={{
 			height: 40
-		}} placeholder="Enter the ID Card"/>
-		<Text>Email:</Text>
+		}} placeholder="Introduce el DNI/Pasaporte..."/>
+	<Text>Correo:</Text>
 		<TextInput autoCapitalize="none" style={{
 			height: 40
-		}} onChangeText={handleEmail} value={email} placeholder="Enter the email"/>
-	<Text>Password:</Text>
+		}} onChangeText={handleEmail} value={email} placeholder="Introduce el email..."/>
+	<Text>Contraseña:</Text>
 		<TextInput secureTextEntry={true} style={{
 			height: 40
-		}} onChangeText={handlePwd} value={pwd} placeholder="Enter the password"/>
-		<Button buttonStyle={{backgroundColor: '#FF9800'}} onPress={handleSubmit} title="Sign Up"/>
+		}} onChangeText={handlePwd} value={pwd} placeholder="Introduce la contraseña"/>
+	<Button buttonStyle={{backgroundColor: '#FF9800'}} onPress={handleSubmit} title="Registrarse!"/>
 	</View>
 );
 

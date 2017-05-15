@@ -8,7 +8,7 @@ import {incrementPlate, decrementPlate, confirmCart } from '../actions/cartActio
 
 class CartContainer extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: `Cart`,
+    title: `Carta`,
   });
   constructor(props){
     super(props);

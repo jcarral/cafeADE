@@ -52,15 +52,15 @@ A continuación se debe lanzar el comando `react-native run-ios` o `react-native
 
 | Funcionalidad | Actor | Captura |
 | --------------------------------|
-| **Inicio:** Vista de la pagina de inicio. | Anónimo, Usuario, Empleado | <img alt="Homepage" src="./captures/homepage.png" width="273px"/><img alt="Homepage" src="./captures/homepage_logged.png" width="273px"/>|
-| **Iniciar sesión:** Vista de la página para iniciar la sesión. | Anónimo. | <img alt="Login" src="./captures/login.png" width="273px"/> |
-| **Registro:** Página para registrar nuevos usuario | Anónimo | <img alt="SignUp" src="./captures/signup.png" width="273px"/> |
-| **Ver menús:** Pantalla para ver los diferentes tipos de menús y los platos en cada uno de ellos. | Anónimo, Usuario, Empleado | <img alt="Pagina menus" src="./captures/menus_page.png" width="273px"/> <img alt="Lista de platos" src="./captures/menus_normal.png" width="273px"/> <img alt="Detalle menu" src="./captures/plate_detail.png" width="273px"/> |
-| ** Añadir plato a la carta: ** Funcionalidad para añadir un plato a la lista de la compra. Solo disponoble para usuario con la sesión iniciada. | Usuario, Empleado | <img alt="Añadir" src="./captures/menuType_logged.png" width="273px"/> |
-| **Confirmar/Modificar pedido:** Página para poder confirmar el pedido, modificar, incrementar el número de platos, enviar a domicilio o añadir algún comentario extra | Usuario, Empleado | <img alt="Carta" src="./captures/cart_normal.png" width="273px"/> <img alt="Carta domicilio" src="./captures/cart_takeaway.png" width="273px"/> |
-| ** Confirmación pedido: ** Pestaña con los detalles del pedido una vez se ha confirmado. | Usuario, Empleado | <img alt="Confirmación" src="./captures/confirm.png" width="273px"/> |
-| **Lista de pedidos:** Lista con los pedidos de los usuarios. | Empleado | <img alt="Lista pedidos" src="./captures/orders_employee.png" width="273px"/>|
-| **Detalles pedido:** Funcionalidad para ver y/o confirmar el pedido realizado por un usuario. | Empleado | <img alt="Detalle pedido" src="./captures/order_employee_detail.png" width="273px"/>
+| **Inicio:** Vista de la pagina de inicio. | Anónimo, Usuario, Empleado | ![Homepage](./captures/homepage.png)![Homepage](./captures/homepage_logged.png)|
+| **Iniciar sesión:** Vista de la página para iniciar la sesión. | Anónimo. | ![Login](./captures/login.png) |
+| **Registro:** Página para registrar nuevos usuario | Anónimo | ![SignUp](./captures/signup.png) |
+| **Ver menús:** Pantalla para ver los diferentes tipos de menús y los platos en cada uno de ellos. | Anónimo, Usuario, Empleado | ![Pagina menus](./captures/menus_page.png) ![Lista de platos](./captures/menus_normal.png) ![Detalle menu](./captures/plate_detail.png) |
+| ** Añadir plato a la carta: ** Funcionalidad para añadir un plato a la lista de la compra. Solo disponoble para usuario con la sesión iniciada. | Usuario, Empleado | ![Añadir](./captures/menuType_logged.png) |
+| **Confirmar/Modificar pedido:** Página para poder confirmar el pedido, modificar, incrementar el número de platos, enviar a domicilio o añadir algún comentario extra | Usuario, Empleado | ![Carta](./captures/cart_normal.png) ![Carta domicilio](./captures/cart_takeaway.png) |
+| ** Confirmación pedido: ** Pestaña con los detalles del pedido una vez se ha confirmado. | Usuario, Empleado | ![Confirmación](./captures/confirm.png) |
+| **Lista de pedidos:** Lista con los pedidos de los usuarios. | Empleado | ![Lista pedidos](./captures/orders_employee.png)|
+| **Detalles pedido:** Funcionalidad para ver y/o confirmar el pedido realizado por un usuario. | Empleado | ![Detalle pedido](./captures/order_employee_detail.png)
 
 
 ### Licencia
